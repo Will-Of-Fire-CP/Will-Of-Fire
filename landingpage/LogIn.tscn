@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/SuoGrotesque-mL0B2.otf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 23
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[node name="Login" type="Node2D"]
+
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_right = 339.0
+margin_bottom = 28.0
+custom_colors/caret_background_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/background_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "UserName"
+syntax_highlighting = true
+
+[node name="TextEdit2" type="TextEdit" parent="."]
+margin_top = 64.0
+margin_right = 339.0
+margin_bottom = 92.0
+custom_colors/caret_background_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/background_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "UserName"
+syntax_highlighting = true
+hiding_enabled = true
