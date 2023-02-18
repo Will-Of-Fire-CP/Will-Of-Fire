@@ -1,5 +1,5 @@
 extends KinematicBody
-export var speed := 7
+export var speed := 20
 export var jump_strength:= 20
 export var gravity := 50
 
@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	
 	if _velocity.length() > 0.2:
 		var look_direction = Vector2(_velocity.z, _velocity.x)
-		_model.rotation.y = look_direction.angle()
+		_model.rotation.y = look_direction.angle() -67.5
 
 func _process(delta: float) -> void:
 	_spring_arm.translation = translation

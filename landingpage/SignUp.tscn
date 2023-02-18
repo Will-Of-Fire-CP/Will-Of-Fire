@@ -1,11 +1,24 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/SuoGrotesque-mL0B2.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Lato/Lato-Bold.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 23
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 23
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 23
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 23
+font_data = ExtResource( 2 )
 
 [node name="SignUp" type="Node2D"]
 
@@ -16,7 +29,6 @@ custom_colors/caret_background_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/background_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "UserName"
 syntax_highlighting = true
 
 [node name="TextEdit2" type="TextEdit" parent="."]
@@ -27,16 +39,64 @@ custom_colors/caret_background_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/background_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "UserName"
 syntax_highlighting = true
 
 [node name="TextEdit3" type="TextEdit" parent="."]
 margin_top = 128.0
 margin_right = 339.0
 margin_bottom = 156.0
+rect_pivot_offset = Vector2( 24, 16 )
 custom_colors/caret_background_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/background_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "UserName"
 syntax_highlighting = true
+
+[node name="TextEdit4" type="TextEdit" parent="."]
+margin_top = 192.0
+margin_right = 339.0
+margin_bottom = 220.0
+custom_colors/symbol_color = Color( 0, 0, 0, 1 )
+custom_colors/caret_background_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/background_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+syntax_highlighting = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = -136.0
+margin_right = -8.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 40, 20 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+text = "User Name"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+margin_left = -80.0
+margin_top = 64.0
+margin_bottom = 117.0
+rect_pivot_offset = Vector2( 39, 9 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 3 )
+text = "Email"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+margin_left = -160.0
+margin_top = 128.0
+margin_right = -8.0
+margin_bottom = 181.0
+rect_pivot_offset = Vector2( 160, 16 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 4 )
+text = "Set Password"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+margin_left = -208.0
+margin_top = 192.0
+margin_right = -7.0
+margin_bottom = 245.0
+rect_pivot_offset = Vector2( 39, 9 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 4 )
+text = "Confirm Password"

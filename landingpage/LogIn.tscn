@@ -1,11 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/SuoGrotesque-mL0B2.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Lato/Lato-Bold.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 23
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 23
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 23
+font_data = ExtResource( 2 )
 
 [node name="Login" type="Node2D"]
 
@@ -16,7 +25,6 @@ custom_colors/caret_background_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/background_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "UserName"
 syntax_highlighting = true
 
 [node name="TextEdit2" type="TextEdit" parent="."]
@@ -27,6 +35,24 @@ custom_colors/caret_background_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/background_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "UserName"
 syntax_highlighting = true
 hiding_enabled = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = -136.0
+margin_right = 18.0
+margin_bottom = 41.0
+rect_pivot_offset = Vector2( 39, 9 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+text = "User Name"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+margin_left = -120.0
+margin_top = 64.0
+margin_right = 13.0
+margin_bottom = 117.0
+rect_pivot_offset = Vector2( 39, 9 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 3 )
+text = "Password"
