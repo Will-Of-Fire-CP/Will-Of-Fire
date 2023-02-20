@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 		var look_direction = Vector2(_velocity.z, _velocity.x)
 		_model.rotation.y = look_direction.angle() -67.5
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_spring_arm.translation = translation
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

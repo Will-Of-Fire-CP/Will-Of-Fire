@@ -11,8 +11,12 @@ config_version=4
 [application]
 
 config/name="Will Of Fire"
-run/main_scene="res://game/new scene.tscn"
+run/main_scene="res://src/landingPageYT/landingpage.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+SaveGameData="*res://SaveGameData.gd"
 
 [display]
 
@@ -52,6 +56,11 @@ forward={
 jump={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+data={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 
