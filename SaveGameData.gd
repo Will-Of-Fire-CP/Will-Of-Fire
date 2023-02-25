@@ -16,7 +16,7 @@ func save_data():
 	
 func load_data():
 	var file = File.new()
-	print(file.file_exists(SAVE_GAME_DATA))
+	#print(file.file_exists(SAVE_GAME_DATA))
 	if not file.file_exists(SAVE_GAME_DATA):
 		game_data = {
 			"player_log_in": false
@@ -25,9 +25,18 @@ func load_data():
 		file.close()
 	else:
 		file.open(SAVE_GAME_DATA, File.READ)
-		print(file.get_var())
+		game_data = file.get_var()
 		file.close()
 		
+
+func remove_user_data():
+	var file = File.new()
+	#print(file.file_exists(SAVE_GAME_DATA))
+	game_data = {
+		"player_log_in": false
+	}
+	save_data()
+	file.close()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

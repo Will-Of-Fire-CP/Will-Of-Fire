@@ -4,7 +4,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+signal acountCreated
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,9 +41,9 @@ func _on_HTTPRequest_request_completed(_result, _response_code, _headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
 	var rsdata = json.result
 	# user_email
-	#print(rsdata)
-	if rsdata.message == "login confirmed":
-		print("lets go")
+	print(rsdata)
+	if rsdata.acount_created == true:
+		emit_signal("acountCreated")
 	else:
 		print("invalid user name")
 	pass # Replace with function body.

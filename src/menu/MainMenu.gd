@@ -1,13 +1,10 @@
-extends Node2D
+extends CanvasLayer
 
-signal playerIslogingIn
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var loginData = {
-	"user_name" : null,
-	"password" : null
-}
+signal playerLogingOut
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,9 +16,6 @@ func _ready():
 #	pass
 
 
-func _on_LogInButton_pressed():
-	# print($Password.text)
-	loginData.user_name = $UserName.text
-	loginData.password = $Password.text
-	emit_signal("playerIslogingIn",loginData)
+func _on_LogOut_pressed():
+	emit_signal("playerLogingOut")
 	pass # Replace with function body.

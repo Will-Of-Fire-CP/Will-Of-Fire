@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/SuoGrotesque-mL0B2.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Lato/Lato-Bold.ttf" type="DynamicFontData" id=2]
@@ -9,7 +9,46 @@ size = 23
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="CanvasItemMaterial" id=5]
+[sub_resource type="VisualShaderNodeColorConstant" id=7]
+constant = Color( 0.891849, 0.126728, 0.126728, 1 )
+
+[sub_resource type="VisualShader" id=5]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx, async_visible;
+
+
+
+
+void vertex() {
+// Color:2
+	vec3 n_out2p0 = vec3(0.891849, 0.126728, 0.126728);
+	float n_out2p1 = 1.000000;
+
+// Output:0
+	COLOR.rgb = n_out2p0;
+
+}
+
+void fragment() {
+// Output:0
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -624.765, 477.63 )
+nodes/vertex/2/node = SubResource( 7 )
+nodes/vertex/2/position = Vector2( 200, 260 )
+nodes/vertex/connections = PoolIntArray( 2, 0, 0, 6 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 23
@@ -30,6 +69,7 @@ script = ExtResource( 3 )
 margin_right = 339.0
 margin_bottom = 28.0
 custom_colors/caret_background_color = Color( 0, 0, 0, 1 )
+custom_colors/bookmark_color = Color( 0, 0, 0, 1 )
 custom_colors/caret_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/background_color = Color( 1, 1, 1, 1 )
@@ -39,15 +79,18 @@ caret_blink = true
 caret_blink_speed = 0.6
 
 [node name="Password" type="LineEdit" parent="."]
-material = SubResource( 5 )
+material = SubResource( 6 )
 margin_top = 64.0
 margin_right = 336.0
 margin_bottom = 96.0
-custom_colors/cursor_color = Color( 1, 1, 1, 1 )
+custom_colors/selection_color = Color( 0, 0, 0, 1 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
 custom_colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
-custom_colors/font_color = Color( 0.972549, 0.972549, 0.972549, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/clear_button_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_uneditable = Color( 1, 1, 1, 1 )
+custom_styles/normal = SubResource( 8 )
 secret = true
 caret_blink = true
 caret_blink_speed = 0.6

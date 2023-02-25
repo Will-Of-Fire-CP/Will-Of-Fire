@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/SuoGrotesque-mL0B2.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Lato/Lato-Bold.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,12 @@
 size = 23
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 23
@@ -29,50 +35,48 @@ font_data = ExtResource( 1 )
 script = ExtResource( 3 )
 
 [node name="Name" type="TextEdit" parent="."]
-margin_right = 339.0
-margin_bottom = 28.0
+margin_right = 336.0
+margin_bottom = 40.0
 custom_colors/caret_background_color = Color( 1, 1, 1, 1 )
+custom_colors/caret_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/background_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 1 )
 syntax_highlighting = true
 
 [node name="Email" type="TextEdit" parent="."]
-margin_top = 64.0
-margin_right = 339.0
-margin_bottom = 92.0
-custom_colors/caret_background_color = Color( 1, 1, 1, 1 )
+margin_top = 56.0
+margin_right = 336.0
+margin_bottom = 96.0
+custom_colors/caret_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/background_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 1 )
 syntax_highlighting = true
 
-[node name="SetPassword" type="TextEdit" parent="."]
-margin_top = 128.0
-margin_right = 339.0
-margin_bottom = 156.0
-rect_pivot_offset = Vector2( 24, 16 )
-custom_colors/caret_background_color = Color( 1, 1, 1, 1 )
+[node name="SetPassword" type="LineEdit" parent="."]
+margin_top = 112.0
+margin_right = 336.0
+margin_bottom = 152.0
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/background_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 1 )
-syntax_highlighting = true
+custom_styles/normal = SubResource( 6 )
+secret = true
 
-[node name="CoPassword" type="TextEdit" parent="."]
-margin_top = 192.0
-margin_right = 339.0
-margin_bottom = 220.0
-custom_colors/symbol_color = Color( 0, 0, 0, 1 )
-custom_colors/caret_background_color = Color( 1, 1, 1, 1 )
+[node name="CoPassword" type="LineEdit" parent="."]
+margin_top = 168.0
+margin_right = 336.0
+margin_bottom = 208.0
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/background_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 1 )
-syntax_highlighting = true
+custom_styles/normal = SubResource( 7 )
+secret = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = -136.0
+margin_top = 8.0
 margin_right = -8.0
-margin_bottom = 40.0
+margin_bottom = 48.0
 rect_pivot_offset = Vector2( 40, 20 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 2 )
@@ -89,9 +93,9 @@ text = "Email"
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="."]
 margin_left = -160.0
-margin_top = 128.0
+margin_top = 112.0
 margin_right = -8.0
-margin_bottom = 181.0
+margin_bottom = 165.0
 rect_pivot_offset = Vector2( 160, 16 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 4 )
@@ -99,25 +103,25 @@ text = "Set Password"
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="."]
 margin_left = -208.0
-margin_top = 192.0
+margin_top = 168.0
 margin_right = -7.0
-margin_bottom = 245.0
+margin_bottom = 221.0
 rect_pivot_offset = Vector2( 39, 9 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 4 )
 text = "Confirm Password"
 
 [node name="Panel2" type="Panel" parent="."]
-margin_left = 32.0
-margin_top = 264.0
-margin_right = 304.0
-margin_bottom = 337.0
+margin_left = 16.0
+margin_top = 232.0
+margin_right = 288.0
+margin_bottom = 305.0
 
 [node name="CreateAccount" type="MenuButton" parent="."]
-margin_left = 32.0
-margin_top = 264.0
-margin_right = 304.0
-margin_bottom = 336.0
+margin_left = 16.0
+margin_top = 232.0
+margin_right = 288.0
+margin_bottom = 304.0
 focus_mode = 2
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )

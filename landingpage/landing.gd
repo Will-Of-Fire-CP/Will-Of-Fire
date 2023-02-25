@@ -1,6 +1,7 @@
 extends Node2D
 
-
+signal playerIslogedIn
+onready var playerSavedData = SaveGameData.game_data
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -18,7 +19,6 @@ func _ready():
 
 
 func _on_SignUpButton_pressed():
-	print("got to Sign Up")
 	$MarginContainer/SignUpLine.visible = false
 	$MarginContainer/LoginLine.visible = true
 	$MarginContainer/Login.visible = false
@@ -28,7 +28,6 @@ func _on_SignUpButton_pressed():
 	pass # Replace with function body.
 
 func _on_LoginButton_pressed():
-	print("got to Login")
 	$MarginContainer/SignUpLine.visible = true
 	$MarginContainer/LoginLine.visible = false
 	$MarginContainer/Login.visible = true
@@ -52,9 +51,13 @@ func _on_HTTPRequestLogin_request_completed(_result, _response_code, _headers, b
 	var json = JSON.parse(body.get_string_from_utf8())
 	var rsdata = json.result
 	# user_email
-	print(rsdata)
+	# print(rsdata)
 	if rsdata.message == "login confirmed":
-		print("yes")
+		playerSavedData.player_data = rsdata
+		playerSavedData.player_log_in = true
+		SaveGameData.save_data()
+		#print(SaveGameData.game_data)
+		emit_signal("playerIslogedIn")
 		#save_file.player_log_in = true
 		#save_file.playerData = rsdata
 		#get_tree().change_scene_to(load("res://src/game/new scene.tscn"))

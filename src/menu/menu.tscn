@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/menu/characterView.gd" type="Script" id=1]
 [ext_resource path="res://assets/mycharacter/untitled.glb" type="PackedScene" id=2]
 [ext_resource path="res://assets/Lato/Lato-Bold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://src/menu/FriendPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/menu/NewGameButton.gd" type="Script" id=5]
+[ext_resource path="res://src/menu/MainMenu.gd" type="Script" id=6]
+[ext_resource path="res://src/menu/menuController.gd" type="Script" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.490196, 0.490196, 0.490196, 0.784314 )
@@ -25,10 +28,12 @@ font_data = ExtResource( 3 )
 bg_color = Color( 1, 1, 1, 0 )
 
 [node name="MainMenu" type="CanvasLayer"]
+script = ExtResource( 6 )
 
 [node name="Control" type="Control" parent="."]
 margin_right = 1224.0
 margin_bottom = 700.0
+script = ExtResource( 7 )
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 anchor_right = 1.0
@@ -45,36 +50,37 @@ margin_right = 1104.0
 margin_bottom = 600.0
 custom_styles/panel = SubResource( 1 )
 
-[node name="New Game" type="Button" parent="Control"]
-margin_left = 152.0
-margin_top = 224.0
-margin_right = 296.0
-margin_bottom = 257.0
+[node name="NewGame" type="Button" parent="Control"]
+margin_left = 160.0
+margin_top = 256.0
+margin_right = 304.0
+margin_bottom = 289.0
 rect_pivot_offset = Vector2( 0, -14 )
 custom_fonts/font = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 text = "   New Game"
 align = 0
+script = ExtResource( 5 )
 
 [node name="Continue" type="Button" parent="Control"]
-margin_left = 153.0
-margin_top = 273.0
-margin_right = 297.0
-margin_bottom = 306.0
+margin_left = 161.0
+margin_top = 305.0
+margin_right = 305.0
+margin_bottom = 338.0
 custom_fonts/font = SubResource( 4 )
 custom_styles/normal = SubResource( 3 )
 text = "   Continue"
 align = 0
 
-[node name="TopPlayerLine" type="Line2D" parent="Control"]
-position = Vector2( 120, 144 )
-points = PoolVector2Array( 584, 16, 360, 16, 360, -44 )
-width = 2.0
-default_color = Color( 0, 0, 0, 1 )
-
 [node name="YourWorldLine" type="Line2D" parent="Control"]
 position = Vector2( 440, 144 )
 points = PoolVector2Array( -320, 16, 40, 16, 40, -40 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+
+[node name="TopPlayerLine" type="Line2D" parent="Control"]
+position = Vector2( 120, 144 )
+points = PoolVector2Array( 584, 16, 360, 16, 360, -44 )
 width = 2.0
 default_color = Color( 0, 0, 0, 1 )
 
@@ -85,6 +91,7 @@ width = 2.0
 default_color = Color( 0, 0, 0, 1 )
 
 [node name="YourFriendLine" type="Line2D" parent="Control"]
+visible = false
 position = Vector2( 608, 176 )
 points = PoolVector2Array( 296, -76, 296, -32, 96, -32 )
 width = 2.0
@@ -161,8 +168,14 @@ custom_fonts/font = SubResource( 2 )
 custom_styles/normal = SubResource( 6 )
 text = "Friends Request"
 
-[node name="Node2D" parent="Control" instance=ExtResource( 4 )]
+[node name="UserFriends" parent="Control" instance=ExtResource( 4 )]
 position = Vector2( 736, 168 )
+
+[node name="LogOut" type="Button" parent="Control"]
+margin_top = 16.0
+margin_right = 176.0
+margin_bottom = 56.0
+text = "Log out"
 
 [node name="background" type="Spatial" parent="."]
 
@@ -190,3 +203,6 @@ script = ExtResource( 1 )
 transform = Transform( 1, -4.47035e-08, -8.38217e-15, 4.15384e-08, 0.929197, 0.369585, -1.65217e-08, -0.369584, 0.929197, 0, 7.04812, 20 )
 current = true
 near = 0.64
+
+[connection signal="pressed" from="Control/NewGame" to="Control/NewGame" method="_on_New_Game_pressed"]
+[connection signal="pressed" from="Control/LogOut" to="." method="_on_LogOut_pressed"]

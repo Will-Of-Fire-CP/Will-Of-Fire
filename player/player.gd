@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	if is_jumping: 
 		_velocity.y = jump_strength
 		_snap_vector = Vector3.ZERO
-	elif just_landed:
+	elif just_landed:               
 		_snap_vector = Vector3 .DOWN
 	_velocity = move_and_slide_with_snap(_velocity, _snap_vector, Vector3.UP, true)
 	
