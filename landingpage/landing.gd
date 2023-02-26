@@ -51,16 +51,12 @@ func _on_HTTPRequestLogin_request_completed(_result, _response_code, _headers, b
 	var json = JSON.parse(body.get_string_from_utf8())
 	var rsdata = json.result
 	# user_email
-	# print(rsdata)
 	if rsdata.message == "login confirmed":
 		playerSavedData.player_data = rsdata
 		playerSavedData.player_log_in = true
-		SaveGameData.save_data()
-		#print(SaveGameData.game_data)
-		emit_signal("playerIslogedIn")
-		#save_file.player_log_in = true
-		#save_file.playerData = rsdata
-		#get_tree().change_scene_to(load("res://src/game/new scene.tscn"))
+		SaveGameData.save_data(playerSavedData)
+		if(playerSavedData.player_log_in):
+			emit_signal("playerIslogedIn")
 	else:
 		print("no user")
 	pass # Replace with function body.

@@ -41,7 +41,7 @@ func _on_HTTPRequest_request_completed(_result, _response_code, _headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
 	var rsdata = json.result
 	# user_email
-	print(rsdata)
+	#print(rsdata)
 	if rsdata.acount_created == true:
 		emit_signal("acountCreated")
 	else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/menu/characterView.gd" type="Script" id=1]
 [ext_resource path="res://assets/mycharacter/untitled.glb" type="PackedScene" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://src/menu/NewGameButton.gd" type="Script" id=5]
 [ext_resource path="res://src/menu/MainMenu.gd" type="Script" id=6]
 [ext_resource path="res://src/menu/menuController.gd" type="Script" id=7]
+[ext_resource path="res://src/searchForFriends/searchForFriends.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/searchForFriends/friendRequestPanell.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/Lato/Lato-Black.ttf" type="DynamicFontData" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.490196, 0.490196, 0.490196, 0.784314 )
@@ -26,6 +29,10 @@ font_data = ExtResource( 3 )
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
+font_data = ExtResource( 10 )
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource( 6 )
@@ -48,6 +55,7 @@ margin_left = 120.0
 margin_top = 100.0
 margin_right = 1104.0
 margin_bottom = 600.0
+rect_pivot_offset = Vector2( 920, 4 )
 custom_styles/panel = SubResource( 1 )
 
 [node name="NewGame" type="Button" parent="Control"]
@@ -73,33 +81,48 @@ text = "   Continue"
 align = 0
 
 [node name="YourWorldLine" type="Line2D" parent="Control"]
-position = Vector2( 440, 144 )
+position = Vector2( 381.615, 144 )
+scale = Vector2( 0.818681, 1 )
 points = PoolVector2Array( -320, 16, 40, 16, 40, -40 )
 width = 2.0
 default_color = Color( 0, 0, 0, 1 )
 
 [node name="TopPlayerLine" type="Line2D" parent="Control"]
-position = Vector2( 120, 144 )
-points = PoolVector2Array( 584, 16, 360, 16, 360, -44 )
+position = Vector2( 54.0001, 144 )
+points = PoolVector2Array( 586, 16, 360, 16, 360, -15, 360, -44 )
 width = 2.0
 default_color = Color( 0, 0, 0, 1 )
 
 [node name="SplitLine" type="Line2D" parent="Control"]
-position = Vector2( 440, 144 )
-points = PoolVector2Array( 264, 456, 264, -44 )
+position = Vector2( 288, 144 )
+scale = Vector2( 1.66661, 1 )
+points = PoolVector2Array( 211.601, 456, 211.808, -44 )
 width = 2.0
 default_color = Color( 0, 0, 0, 1 )
 
 [node name="YourFriendLine" type="Line2D" parent="Control"]
 visible = false
-position = Vector2( 608, 176 )
-points = PoolVector2Array( 296, -76, 296, -32, 96, -32 )
+position = Vector2( 640, 176 )
+scale = Vector2( 0.480392, 0.958333 )
+points = PoolVector2Array( 266.449, -33.3913, 0, -33.3913 )
 width = 2.0
 default_color = Color( 0, 0, 0, 1 )
 
+[node name="Line2D" type="Line2D" parent="Control/YourFriendLine"]
+points = PoolVector2Array( 266.449, -32.3478, 266.449, -79.3044 )
+width = 4.0
+default_color = Color( 0, 0, 0, 1 )
+
 [node name="FriendRequestLine" type="Line2D" parent="Control"]
-position = Vector2( 792, 200 )
-points = PoolVector2Array( 312, -56, 112, -56, 112, -100 )
+position = Vector2( 698.26, 200 )
+scale = Vector2( 0.648637, 0.958333 )
+points = PoolVector2Array( 366.608, -104.348, 366.608, -58.4348, 106.435, -58.4348, 106.435, -80.5435, 106.435, -104.348 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+
+[node name="sendRequestLine" type="Line2D" parent="Control"]
+position = Vector2( 56, -72 )
+points = PoolVector2Array( 1048, 216, 880, 216, 880, 172 )
 width = 2.0
 default_color = Color( 0, 0, 0, 1 )
 
@@ -135,47 +158,76 @@ text = "Your World"
 [node name="TopPlayerButton" type="Button" parent="Control"]
 pause_mode = 1
 physics_interpolation_mode = 1
-margin_left = 520.0
-margin_top = 109.0
-margin_right = 635.0
-margin_bottom = 142.0
+margin_left = 456.0
+margin_top = 104.0
+margin_right = 571.0
+margin_bottom = 137.0
 rect_pivot_offset = Vector2( 0, -14 )
 custom_fonts/font = SubResource( 2 )
 custom_styles/normal = SubResource( 6 )
 text = "Top Player"
 
-[node name="TopPlayerButton2" type="Button" parent="Control"]
+[node name="GetFriends" type="Button" parent="Control"]
 pause_mode = 1
 physics_interpolation_mode = 1
-margin_left = 744.0
+margin_left = 664.0
 margin_top = 104.0
-margin_right = 859.0
+margin_right = 752.0
 margin_bottom = 137.0
 rect_pivot_offset = Vector2( 0, -14 )
 custom_fonts/font = SubResource( 2 )
 custom_styles/normal = SubResource( 6 )
 text = "Friends"
 
-[node name="TopPlayerButton3" type="Button" parent="Control"]
+[node name="GetFriendRequests" type="Button" parent="Control"]
 pause_mode = 1
 physics_interpolation_mode = 1
-margin_left = 944.0
+margin_left = 792.0
 margin_top = 104.0
-margin_right = 1059.0
-margin_bottom = 137.0
+margin_right = 908.0
+margin_bottom = 136.0
 rect_pivot_offset = Vector2( 0, -14 )
 custom_fonts/font = SubResource( 2 )
 custom_styles/normal = SubResource( 6 )
 text = "Friends Request"
 
+[node name="SendFriendRequest" type="Button" parent="Control"]
+pause_mode = 1
+physics_interpolation_mode = 1
+margin_left = 944.0
+margin_top = 104.0
+margin_right = 1092.0
+margin_bottom = 136.0
+grow_vertical = 0
+rect_pivot_offset = Vector2( 0, -14 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 6 )
+text = "Send Friend Request"
+
 [node name="UserFriends" parent="Control" instance=ExtResource( 4 )]
-position = Vector2( 736, 168 )
+position = Vector2( 696, 169 )
+
+[node name="SearchFriend" parent="Control" instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 664, 160 )
 
 [node name="LogOut" type="Button" parent="Control"]
 margin_top = 16.0
 margin_right = 176.0
 margin_bottom = 56.0
 text = "Log out"
+
+[node name="FriendRequestPanel" parent="Control" instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 695, 168 )
+
+[node name="PlayerName" type="RichTextLabel" parent="Control"]
+margin_left = 135.0
+margin_top = 181.0
+margin_right = 333.0
+margin_bottom = 231.0
+custom_fonts/normal_font = SubResource( 7 )
+text = "Name"
 
 [node name="background" type="Spatial" parent="."]
 
@@ -205,4 +257,10 @@ current = true
 near = 0.64
 
 [connection signal="pressed" from="Control/NewGame" to="Control/NewGame" method="_on_New_Game_pressed"]
+[connection signal="pressed" from="Control/GetFriends" to="Control" method="_on_GetFriends_pressed"]
+[connection signal="pressed" from="Control/GetFriends" to="Control/UserFriends" method="_on_GetFriends_pressed"]
+[connection signal="pressed" from="Control/GetFriendRequests" to="Control" method="_on_GetFriendRequests_pressed"]
+[connection signal="pressed" from="Control/GetFriendRequests" to="Control/FriendRequestPanel" method="_on_GetFriendRequests_pressed"]
+[connection signal="pressed" from="Control/SendFriendRequest" to="Control" method="_on_SendFriendRequest_pressed"]
 [connection signal="pressed" from="Control/LogOut" to="." method="_on_LogOut_pressed"]
+[connection signal="relode_friend_list" from="Control/FriendRequestPanel" to="Control/UserFriends" method="_on_FriendRequestPanel_relode_friend_list"]

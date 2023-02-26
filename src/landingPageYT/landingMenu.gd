@@ -11,7 +11,8 @@ func _ready():
 		$Credentials.visible = false
 		$MainMenu.visible = true
 		$MainMenu/Control/UserFriends.testingfun()
-	pass # Replace with function body.
+		$MainMenu/Control/FriendRequestPanel.getplayer_friend_request()
+		$MainMenu.set_player_data()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,16 +23,19 @@ func _ready():
 
 
 func _on_Credentials_playerIslogedIn():
+	$MainMenu.set_player_data()
 	$MainMenu.visible = true
 	$Credentials.visible = false
 	$MainMenu/Control/UserFriends.testingfun()
+	$MainMenu/Control/FriendRequestPanel.getplayer_friend_request()
 	pass # Replace with function body.
 
 
 func _on_MainMenu_playerLogingOut():
 	SaveGameData.remove_user_data()
-	print(playerSavedData)
 	$MainMenu.visible = false
+	$MainMenu/Control/UserFriends/ScrollContainer/VBoxContainer.player_log_out_remove_friends()
+	$MainMenu/Control/FriendRequestPanel/ScrollContainer/VBoxContainer.player_log_out_remove_friends_request()
 	$Credentials.visible = true
 	
 	pass # Replace with function body.
