@@ -19,6 +19,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		rotation_degrees.y -= event.relative.x * mouse_sens
 		rotation_degrees.y = wrapf(rotation_degrees.y, 0.0, 360.0)
+		
+		$"../Sprite3D".rotation_degrees.x -= event.relative.y * mouse_sens
+		$"../Sprite3D".rotation_degrees.x = clamp(rotation_degrees.x, -90.0,30.0)
+		
+		$"../Sprite3D".rotation_degrees.y -= event.relative.x * mouse_sens
+		$"../Sprite3D".rotation_degrees.y = wrapf(rotation_degrees.y, 0.0, 360.0)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -50,6 +50,7 @@ func _on_Login_playerIslogingIn(data):
 func _on_HTTPRequestLogin_request_completed(_result, _response_code, _headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
 	var rsdata = json.result
+	#print('here is requesr')
 	# user_email
 	if rsdata.message == "login confirmed":
 		playerSavedData.player_data = rsdata
@@ -59,4 +60,5 @@ func _on_HTTPRequestLogin_request_completed(_result, _response_code, _headers, b
 			emit_signal("playerIslogedIn")
 	else:
 		print("no user")
+	$MarginContainer/Login/LogInButton.disabled = false
 	pass # Replace with function body.

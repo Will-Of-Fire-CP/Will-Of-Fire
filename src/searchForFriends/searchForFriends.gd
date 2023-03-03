@@ -70,7 +70,7 @@ func _on_SendFriendReuest_pressed():
 	pass # Replace with function body.
 
 
-func _on_SendFriendRequest_request_completed(result, response_code, headers, body):
+func _on_SendFriendRequest_request_completed(_result, _response_code, _headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
 	var rsdata = json.result
 	print(rsdata)

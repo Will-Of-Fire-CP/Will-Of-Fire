@@ -17,5 +17,5 @@ func _ready():
 
 
 func _on_New_Game_pressed():
-	var _getingGameScenne = get_tree().change_scene("res://src/game/new scene.tscn")
+	#var _getingGameScenne = get_tree().change_scene("res://src/game/maingame.tscn")
 	pass # Replace with function body.

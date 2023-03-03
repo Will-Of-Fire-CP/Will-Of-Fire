@@ -49,7 +49,7 @@ margin_bottom = 620.0
 script = ExtResource( 5 )
 
 [node name="Credentials" parent="Menu/MarginContainer/VBoxContainer" instance=ExtResource( 4 )]
-position = Vector2( -57, -79 )
+position = Vector2( -60, -80 )
 
 [node name="MainMenu" parent="Menu/MarginContainer/VBoxContainer" instance=ExtResource( 2 )]
 visible = false

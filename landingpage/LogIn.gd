@@ -20,7 +20,7 @@ func _ready():
 
 
 func _on_LogInButton_pressed():
-	# print($Password.text)
+	#print($Password.text)
 	loginData.user_name = $UserName.text
 	loginData.password = $Password.text
 	emit_signal("playerIslogingIn",loginData)

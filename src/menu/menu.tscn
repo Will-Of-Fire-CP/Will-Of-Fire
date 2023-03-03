@@ -263,4 +263,3 @@ near = 0.64
 [connection signal="pressed" from="Control/GetFriendRequests" to="Control/FriendRequestPanel" method="_on_GetFriendRequests_pressed"]
 [connection signal="pressed" from="Control/SendFriendRequest" to="Control" method="_on_SendFriendRequest_pressed"]
 [connection signal="pressed" from="Control/LogOut" to="." method="_on_LogOut_pressed"]
-[connection signal="relode_friend_list" from="Control/FriendRequestPanel" to="Control/UserFriends" method="_on_FriendRequestPanel_relode_friend_list"]

@@ -1,14 +1,23 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://assets/mycharacter/untitled.glb" type="PackedScene" id=2]
 [ext_resource path="res://player/SpringArm.gd" type="Script" id=3]
+[ext_resource path="res://fire/fire.tscn" type="PackedScene" id=4]
+[ext_resource path="res://fire/fire.gd" type="Script" id=5]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 4.28148
 height = 5.37004
 
-[node name="KinematicBody" type="KinematicBody"]
+[sub_resource type="CapsuleShape" id=3]
+
+[sub_resource type="ViewportTexture" id=4]
+viewport_path = NodePath("Sprite3D/Viewport")
+
+[node name="KinematicBody" type="KinematicBody" groups=["Player"]]
+collision_layer = 4
+collision_mask = 6
 script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -19,9 +28,55 @@ shape = SubResource( 1 )
 transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, 0, 0.737448, 0 )
 
 [node name="SpringArm" type="SpringArm" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0778893, 6.49987, 2.97001 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0786632, 5.04507, 2.96765 )
 spring_length = 7.0
 margin = 0.05
 script = ExtResource( 3 )
 
 [node name="Camera" type="Camera" parent="SpringArm"]
+fov = 56.2378
+far = 200.0
+
+[node name="fire" parent="." instance=ExtResource( 4 )]
+transform = Transform( -1.43539e-07, 0, -3.28379, 0, 3.28379, 0, 3.28379, 0, -1.43539e-07, 0, -3.19931, 0.00608921 )
+visible = false
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 5 )
+
+[node name="Cone" parent="fire" index="0"]
+transform = Transform( 0, 1, 0, -1, 0, 0, 0, 0, 1, -3.51084, 0.997776, 0 )
+
+[node name="Area" type="Area" parent="fire"]
+collision_mask = 3
+
+[node name="CollisionShape" type="CollisionShape" parent="fire/Area"]
+transform = Transform( 3.18983, 0, -1.64973e-08, 0, 0.703204, 0, -1.6497e-08, 0, 2.81242, -3.46407, 1.1396, 1.51419e-07 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Timer" type="Timer" parent="fire"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 1.33424, 0, 1.77636e-14, 0, 0.602523, 0, -1.77636e-14, 0, 1.33424, 0, 2.21641, 0 )
+texture = SubResource( 4 )
+
+[node name="Viewport" type="Viewport" parent="Sprite3D"]
+size = Vector2( 100, 20 )
+
+[node name="ColorRect2" type="ColorRect" parent="Sprite3D/Viewport"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="green" type="ColorRect" parent="Sprite3D/Viewport"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 1, 0.227451, 1 )
+
+[connection signal="body_entered" from="fire/Area" to="fire" method="_on_Area_body_entered"]
+[connection signal="timeout" from="fire/Timer" to="fire" method="_on_Timer_timeout"]
+
+[editable path="fire"]
